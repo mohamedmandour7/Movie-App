@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap");
+
+/* ─── CSS Variables ─────────────────────────────── */
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface2: #242424;
+  --border: #2e2e2e;
+  --gold: #e2b04a;
+  --gold-dim: #a07828;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --red: #e05252;
+  --radius: 10px;
+}
+
+/* ─── Reset ─────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ─── Nav Bar ───────────────────────────────────── */
+.nav-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 7.2rem;
+  padding: 0 3.2rem;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo span {
+  font-size: 2.8rem;
+}
+
+.logo h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  color: var(--gold);
+}
+
+.search {
+  justify-self: center;
+  width: 100%;
+  max-width: 40rem;
+  padding: 1rem 1.6rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.5rem;
+  background-color: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search::placeholder {
+  color: var(--text-dim);
+}
+
+.search:focus {
+  border-color: var(--gold);
+}
+
+.num-results {
+  justify-self: end;
+  font-size: 1.4rem;
+  color: var(--text-dim);
+}
+
+.num-results strong {
+  color: var(--gold);
+}
+
+/* ─── Main Layout ───────────────────────────────── */
+.main {
+  display: flex;
+  gap: 2.4rem;
+  padding: 2.4rem 3.2rem;
+  max-width: 120rem;
+  margin: 0 auto;
+  height: calc(100vh - 7.2rem);
+}
+
+.box {
+  flex: 1;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-y: auto;
+  position: relative;
+}
+
+.btn-toggle {
+  position: sticky;
+  top: 0.8rem;
+  float: right;
+  margin: 0.8rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: var(--surface2);
+  color: var(--text);
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.btn-toggle:hover {
+  background-color: var(--gold);
+  color: var(--bg);
+}
+
+/* ─── Movie List ────────────────────────────────── */
+.list {
+  list-style: none;
+  padding: 0.8rem 0;
+}
+
+.list li {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.2rem 2.4rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list-movies li:hover {
+  background-color: var(--surface2);
+}
+
+.list li img {
+  width: 5rem;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.list li h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.list li div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.list li p {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  color: var(--text-dim);
+}
+
+/* ─── Watched Summary ───────────────────────────── */
+.summary {
+  padding: 2rem 2.4rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--surface2);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.summary h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.summary div {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.summary p {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  color: var(--text-dim);
+}
+
+/* ─── Movie Details ─────────────────────────────── */
+.details {
+  padding: 2.4rem;
+  line-height: 1.7;
+}
+
+.details header {
+  display: flex;
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.details header img {
+  width: 12rem;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.details-overview h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.details-overview p {
+  font-size: 1.4rem;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+
+.btn-back {
+  display: block;
+  margin-bottom: 1.6rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  color: var(--gold);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-back:hover {
+  background-color: var(--surface2);
+}
+
+.details section {
+  font-size: 1.4rem;
+  color: var(--text-dim);
+}
+
+.details section p {
+  margin-bottom: 1rem;
+}
+
+.rating {
+  background-color: var(--surface2);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  margin-bottom: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.btn-add {
+  padding: 0.8rem 1.6rem;
+  background-color: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 6px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+
+.btn-add:hover {
+  background-color: var(--gold-dim);
+}
+
+.btn-delete {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--red);
+  font-size: 1.2rem;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: var(--red);
+  color: #fff;
+}
+
+/* ─── States ────────────────────────────────────── */
+.loader {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.6rem;
+  color: var(--text-dim);
+}
+
+.error {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.5rem;
+  color: var(--red);
+}
+
+/* ─── Scrollbar ─────────────────────────────────── */
+.box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.box::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+.box::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
